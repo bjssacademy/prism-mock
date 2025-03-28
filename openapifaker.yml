@@ -1,0 +1,25 @@
+openapi: 3.1.0
+info:
+  title: Simple API
+  version: 1.0.0
+paths:
+  /pets:
+    get:
+      summary: Returns a list of pets with photos
+      responses:
+        "200":
+          description: A greeting message
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  name:
+                    type: string
+                    x-faker: name.firstName
+                    example: "Pluto"
+                  urls:
+                    type: array
+                    items:
+                      type: string
+                      x-faker: image.imageUrl

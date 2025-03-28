@@ -1,0 +1,26 @@
+openapi: 3.1.0
+info:
+  title: Simple API
+  version: 1.0.0
+paths:
+  /greet:
+    get:
+      summary: Returns a greeting message
+      parameters:
+        - in: query
+          name: name
+          required: false
+          schema:
+            type: string
+            example: "John"
+      responses:
+        "200":
+          description: A greeting message
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: "Hello, John!"
