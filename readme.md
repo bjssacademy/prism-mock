@@ -153,9 +153,23 @@ Prism uses the Faker and JSON Schema Faker libraries to help with that.
 
 In your OpenAPI description, you can pass in the `x-faker` keyword to a property, which allows for a specific Faker API method to be used.
 
-If a user passes a method that doesn't exist, Prism falls back to using `JSON Schema Faker` to generate random values for that property.
+If a user passes a method that doesn't exist, Prism falls back to using `JSON Schema Faker` to generate random values for that property. For example, if you ran
 
-For example, here's how you can use the `name.firstName` and `image.imageUrl` Faker methods:
+```bash
+prism mock openapi.yml -d
+```
+
+And then issued a GET request to localhost:4010/greet you'd get back something like
+
+```json
+{
+  "message": "est ut in"
+}
+```
+
+### Using Typed Data
+
+Here's how you can use the `name.firstName` and `image.imageUrl` Faker methods:
 
 ```yml
 openapi: 3.1.0
@@ -203,10 +217,10 @@ All the various supported methods can be found [here](https://docs.stoplight.io/
 
 ## Real World Example
 
-I've included the AMP OpenAPI spec as a json file. To execute it run:
+I've included the AMP OpenAPI spec as a json file. To execute it and provide dynamic data run:
 
 ```bash
-prism mock amp.json
+prism mock amp.json -d
 ```
 
 This will start creating example endpoints for you with params (you don't have to use the examples, anything matching the route will work):
